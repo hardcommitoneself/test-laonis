@@ -1,5 +1,7 @@
 <template>
-  <div class="bg-white rounded-lg">
+  <div :class="['relative bg-white rounded-lg transition', loading ? '' : '']">
+    <!-- loading -->
+    <base-loading v-if="loading" />
     <div class="flex justify-between pt-10 px-10">
         <!-- price -->
         <div class="flex gap-5">
@@ -44,6 +46,7 @@ import axios from 'axios';
 import HomeLineChartTimeFrameWrapper from "@/components/Page/Home/HomeLineChartTimeFrameWrapper.vue"
 import HomeLineChartTimeFrameItem from "@/components/Page/Home/HomeLineChartTimeFrameItem.vue"
 import TextBase from "@/components/Base/Text/TextBase.vue";
+import BaseLoading from "@/components/Base/BaseLoading.vue"
 
 let interval: number;
 
@@ -140,17 +143,21 @@ export default defineComponent({
             currentPrice: 0,
             currentPricePrecision: 0,
             precent: 0,
-            currentTimeframe: 0
+            currentTimeframe: 0,
+            loading: false
         };
     },
     components: {
         apexChart: VueApexCharts,
         TextBase,
         HomeLineChartTimeFrameWrapper,
-        HomeLineChartTimeFrameItem
+        HomeLineChartTimeFrameItem,
+        BaseLoading
     },
     methods: {
         async getData() {
+            this.loading = true;
+
             let date = new Date();
             let to = Math.floor(date.getTime() / 1000);
             let from = 0;
@@ -168,6 +175,8 @@ export default defineComponent({
             this.currentPrice = Math.floor(res.data.prices[res.data.prices.length - 1][1]);
             this.currentPricePrecision = Math.floor(parseFloat(((res.data.prices[res.data.prices.length - 1][1] - this.currentPrice) * 100).toFixed(2)))
             this.precent = parseFloat(((res.data.prices[res.data.prices.length - 1][1] - res.data.prices[0][1]) / 100).toFixed(2));
+
+            this.loading = false;
         },
         changeTimeframe(timeframe: number) {
             this.currentTimeframe = timeframe;
