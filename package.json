@@ -1,6 +1,9 @@
 {
   "name": "laonis",
   "version": "0.0.0",
+  "proxy": {
+    "*":{ "target" : "https://www.coingecko.com"}
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
@@ -10,7 +13,11 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "vue": "^3.2.37"
+    "apexcharts": "^3.35.4",
+    "axios": "^0.27.2",
+    "moment": "^2.29.4",
+    "vue": "^3.2.37",
+    "vue3-apexcharts": "^1.4.1"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",

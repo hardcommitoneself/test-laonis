@@ -1,8 +1,20 @@
-<script setup lang="ts">
-</script>
 
 <template>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+  <app-layout>
+    <Home />
+  </app-layout>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+import AppLayout from './layout/AppLayout.vue';
+import Home from './pages/Home.vue';
+
+export default defineComponent({
+  components: {
+    AppLayout,
+    Home
+  }
+})
+</script>
