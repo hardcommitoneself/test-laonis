@@ -1,5 +1,5 @@
 <template>
-    <span :class="[fontWeight, fontSize]">
+    <span :class="[fontWeight, fontSize, fontColor]">
         <slot />
     </span>
 </template>
@@ -18,6 +18,11 @@ export default defineComponent({
             type: String,
             required: false,
             default: "text-base"
+        },
+        fontColor: {
+            type: String,
+            required: false,
+            default: ""
         }
     }
 })
