@@ -32,7 +32,7 @@
                         </div>
                         
                         <div class="col-span-1">
-
+                            <home-tool-box />
                         </div>
                     </home-body-wrapper>
                 </template>
@@ -50,6 +50,7 @@ import HomeContentWrapper from "@/components/Page/Home/HomeContentWrapper.vue";
 import HomeBodyWrapper from "@/components/Page/Home/HomeBodyWrapper.vue";
 import HomeTabMenu from "@/components/Page/Home/HomeTabMenu.vue";
 import HomeLineChart from "@/components/Page/Home/HomeLineChart.vue";
+import HomeToolBox from "@/components/Page/Home/HomeToolBox.vue";
 import TextBase from "@/components/Base/Text/TextBase.vue";
 import ButtonSquare from "@/components/Base/Button/ButtonSquare.vue";
 
@@ -61,6 +62,7 @@ export default defineComponent({
         HomeBodyWrapper,
         HomeTabMenu,
         HomeLineChart,
+        HomeToolBox,
         TextBase,
         ButtonSquare
     }
