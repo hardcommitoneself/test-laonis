@@ -11,10 +11,10 @@
             <template #right>
                 <nav-bar-right-wrapper>
                     <div class="flex flex-row border-r pr-5 gap-3">
-                        <button-primary active>
-                            <text-base font-weight="font-medium">But / Sell</text-base>
+                        <button-primary :active="page === 0" @click="changePage(0)">
+                            <text-base font-weight="font-medium">Buy / Sell</text-base>
                         </button-primary>
-                        <button-primary>
+                        <button-primary :active="page === 1" @click="changePage(1)">
                             <text-base font-weight="font-medium">Send / Receive</text-base>
                         </button-primary>
                         <button-circle>
@@ -51,6 +51,16 @@ import ButtonPrimary from '@/components/Base/Button/ButtonPrimary.vue'
 import AvatarBase from '@/components/Base/Avatar/AvatarBase.vue'
 
 export default defineComponent({
+    data() {
+        return {
+            page: 0
+        }
+    },
+    methods: {
+        changePage(page: number) {
+            this.page = page;
+        }
+    },
     components: {
         NavBar,
         SideBar,
