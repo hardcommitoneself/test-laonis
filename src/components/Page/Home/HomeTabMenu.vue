@@ -1,6 +1,6 @@
 <template>
     <home-tab-menu-wrapper>
-        <home-tab-menu-item v-for="tab in tabs" :active="tab.active" :key="tab.label">
+        <home-tab-menu-item v-for="tab in tabs" :active="tab.id === currentTab" :key="tab.label" @click="changeTab(tab.id)">
             {{ tab.label }}
         </home-tab-menu-item>
     </home-tab-menu-wrapper>
@@ -17,18 +17,24 @@ export default defineComponent({
         return {
             tabs: [
                 {
-                    label: "Overview",
-                    active: true
+                    id: 0,
+                    label: "Overview"
                 },
                 {
-                    label: "Wallet",
-                    active: false
+                    id: 1,
+                    label: "Wallet"
                 },
                 {
-                    label: "Vault",
-                    active: false
+                    id: 2,
+                    label: "Vault"
                 },
-            ]
+            ],
+            currentTab: 0
+        }
+    },
+    methods: {
+        changeTab(tab: number) {
+            this.currentTab = tab;
         }
     },
     components: {
